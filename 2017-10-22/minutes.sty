@@ -1,0 +1,144 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{minutes}[2017/06/01 Tristan Potter Package]
+
+\RequirePackage{hyperref}
+\RequirePackage{titlesec}
+
+% we are heathens and don't use A4 paper
+\RequirePackage[papersize={8.5in,11in},margin=1in]{geometry}
+\RequirePackage{pdfpages}
+\RequirePackage{graphicx}
+\RequirePackage{multicol}
+
+\RequirePackage[utf8]{inputenc}
+
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{pdfpages}
+\RequirePackage{graphicx}
+
+%% MATH
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+
+\RequirePackage{hyperref}
+\RequirePackage{tocloft}
+
+\RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
+
+\RequirePackage{longtable}
+\RequirePackage{booktabs}
+
+%% Font things
+\RequirePackage[T1]{fontenc}
+\RequirePackage{anyfontsize}
+\RequirePackage{lmodern} \normalfont %to load T1lmr.fd
+
+\RequirePackage{framed}
+\RequirePackage[normalem]{ulem}
+
+\hypersetup{%
+  colorlinks=false,
+  linktoc=all
+}
+
+% Macros
+\newcommand{\HRule}{\rule{\linewidth}{0.4mm}}
+\newcommand{\hlabel}{\phantomsection\label}
+
+% Description lists are indented
+\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+
+% Tranditional Tex commands
+
+\DeclareFontShape{T1}{lmr}{bx}{sc}{<-> ssub * cmr/bx/sc }{}
+
+\renewcommand{\thesection}{\Roman{section}}
+\titleformat*{\section}{\bfseries \LARGE \scshape}
+% \titleformat{\section}{\bfseries \LARGE \scshape}
+\titleformat*{\subsection}{\large \bfseries \scshape}
+\titleformat*{\subsubsection}{\large \bfseries \scshape}
+
+\renewcommand{\familydefault}{\rmdefault}
+
+\makeatletter\renewcommand{\@pnumwidth}{9em}\makeatother
+
+\setlength{\headheight}{15pt}
+
+\newcommand{\defvar}[2]{\def#1##1{\gdef#2{##1}}#1{}}
+
+% current address, appears in left column
+\defvar{\meetingDate}{\printMeetingDate}
+\defvar{\meetingLocation}{\printMeetingLocation}
+\defvar{\speaker}{\printSpeaker}
+\defvar{\secretary}{\printSecretary}
+
+%% Header stuff
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{Federation of Students}
+\chead{}
+\rhead{\printMeetingDate}
+
+\newcommand{\heading}[1]{\subsection*{#1}}
+
+%\page title
+\newcommand{\header}[1]{%
+    \begin{center}
+        % Title
+        {\Large{\bfseries{Federation of Students' #1 Minutes}}}
+        \\ \vspace{0.4cm}
+        {\textsc{\textbf{\printMeetingLocation}}}
+        \\ \vspace{0.2cm} 
+        \begin{tabular}{lr}
+            \large{\emph{Speaker:} \textsc{\printSpeaker}} &
+            \mbox{\large{\emph{Secretary:} \textsc{\printSecretary}}}
+        \end{tabular}
+        \HRule 
+    \end{center}
+    \vspace{0.4cm}
+}
+
+% \newcommand{\heading}[1]{\end{description}\subsection*{##1}\begin{description}}
+\newcommand{\birt}[0]{\item[Be it resolved that] }
+\newcommand{\bifrt}[0]{\item[Be it further resolved that] }
+\newcommand{\whereas}[0]{\item[Whereas] }
+\newcommand{\carries}[0]{\item[Motion carries] }
+\newcommand{\fails}[0]{\item[Motion fails] }
+
+\newcommand{\ammend}[2]{An ammendment was proposed to change \emph{#1} 
+to \emph{#2}.}
+
+\newcommand{\movers}[2]{\\\emph{#1 and #2.}}
+\newcommand{\call}[1]{\printSpeaker\ called the meeting to order at #1.}
+
+\newenvironment{motion}{
+    \begin{description}
+}{\end{description}} % end of motion
+
+\newenvironment{information}{
+    \begin{list}{}{%
+        \setlength{\leftmargin}{\parindent}%
+        \setlength{\listparindent}{\parindent}%
+        % \setlength{\itemindent}{\parindent}%
+        \setlength{\parsep}{\parskip}%
+}\item[]}
+{\end{list}}
+
+% \newenvironment{information}{
+
+% \leftmargin=\parindent,labelindent=\parindent}
+% }{} % end of motion
+
+%% Process options
+
+%%  option
+% \DeclareOption{option-name}{
+%     Declare any optional items here
+% }
+
+%% END OPTIONS
+\ProcessOptions \relax
+
+\endinput
