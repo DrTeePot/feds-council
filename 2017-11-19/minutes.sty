@@ -101,24 +101,23 @@
 }
 
 % \newcommand{\heading}[1]{\end{description}\subsection*{##1}\begin{description}}
+\newcommand{\birt}[0]{\item[Be it resolved that] }
+\newcommand{\bifrt}[0]{\item[Be it further resolved that] }
+\newcommand{\whereas}[0]{\item[Whereas] }
+\newcommand{\carries}[0]{\item[Motion carries] }
+\newcommand{\fails}[0]{\item[Motion fails] }
+
+\newcommand{\ammend}[2]{An ammendment was proposed to change \emph{#1} 
+to \emph{#2}.}
+
+\newcommand{\movers}[2]{\\\emph{#1 and #2.}}
+\newcommand{\call}[1]{\printSpeaker\ called the meeting to order at #1.}
 
 \newenvironment{motion}{
-    \newcommand{\birt}[0]{\item[Be it resolved that] }
-    \newcommand{\bifrt}[0]{\item[Be it further resolved that] }
-    \newcommand{\whereas}[0]{\item[Whereas] }
-    \newcommand{\carries}[0]{\item[Motion carries] }
-    \newcommand{\fails}[0]{\item[Motion fails] }
-
-    \newcommand{\ammend}[2]{An ammendment was proposed to change \emph{##1} 
-    to \emph{##2}.}
-
-    \newcommand{\movers}[2]{\\\emph{##1 and ##2.}}
-
     \begin{description}
 }{\end{description}} % end of motion
 
-\newenvironment{information}
-    {\newcommand{\call}[1]{\printSpeaker\ called the meeting to order at ##1.}
+\newenvironment{information}{
     \begin{list}{}{%
         \setlength{\leftmargin}{\parindent}%
         \setlength{\listparindent}{\parindent}%
